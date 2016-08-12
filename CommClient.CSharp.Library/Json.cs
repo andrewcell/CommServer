@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net;
 
 namespace CommClient.CSharp.Library
 {
-    class HTTP
+    class Json
     {
-
+        
     }
 }
