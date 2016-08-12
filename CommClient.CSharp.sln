@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommClient.CSharp", "CommClient.CSharp\CommClient.CSharp.csproj", "{4B673E2E-9629-4522-8C48-02C404ADABEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommClient.CSharp.WPF", "CommClient.CSharp\CommClient.CSharp.WPF.csproj", "{4B673E2E-9629-4522-8C48-02C404ADABEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommClient.CSharp.Forms", "CommClient.CSharp.Forms\CommClient.CSharp.Forms.csproj", "{C21E9A7B-7AE9-4653-A24A-E9370880C048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommClient.CSharp.Library", "CommClient.CSharp.Library\CommClient.CSharp.Library.csproj", "{456E99AF-3339-4E77-BBDD-94A4FA77DDE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4B673E2E-9629-4522-8C48-02C404ADABEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B673E2E-9629-4522-8C48-02C404ADABEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B673E2E-9629-4522-8C48-02C404ADABEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C21E9A7B-7AE9-4653-A24A-E9370880C048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C21E9A7B-7AE9-4653-A24A-E9370880C048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C21E9A7B-7AE9-4653-A24A-E9370880C048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C21E9A7B-7AE9-4653-A24A-E9370880C048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456E99AF-3339-4E77-BBDD-94A4FA77DDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456E99AF-3339-4E77-BBDD-94A4FA77DDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456E99AF-3339-4E77-BBDD-94A4FA77DDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456E99AF-3339-4E77-BBDD-94A4FA77DDE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
