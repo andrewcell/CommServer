@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
-using System.IO;
 using System.Security.Authentication;
 
 namespace CommServer
 {
     class Program
     {
-        
+        private static string data = "<h1>Connect directly is not accepted.</h1>";   
         
         static void Main(string[] args)
         {
-            HttpListener http = new HttpListener();
-            http.
+            
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -41,11 +36,11 @@ namespace CommServer
                 DisplaySecurityServices(ssl);
                 DisplayCertificateInformation(ssl);
                 DisplayStreamProperties(ssl);
-                byte[] message = Encoding.UTF8.GetBytes(BuildString());
+                byte[] message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
                 string Message = ReadMessage(ssl);
                 Console.WriteLine("{0}", Message);
-             message = Encoding.UTF8.GetBytes(BuildString());
+             message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
             }
             catch (AuthenticationException e)
@@ -60,13 +55,10 @@ namespace CommServer
                 client.Close();
             }
         }
-        static byte[] Send(string Message)
-        {
-            byte[] atk = Encoding.UTF8.GetBytes(Message);
-            return atk;
-        }
+
         static string ReadMessage(SslStream sslStream)
         {
+            // from MSDN
             byte[] buffer = new byte[2048];
             StringBuilder messageData = new StringBuilder();
             int bytes = -1;
@@ -89,16 +81,21 @@ namespace CommServer
 
             return messageData.ToString();
         }
-        static string BuildString()
+        static string BuildString(string data)
         {
+            byte[] leng = new byte[1024];
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("HTTP/1.1 200 OK");
-            //sb.AppendLine("Date: " + DateTime.Now.ToString());
+            sb.AppendLine("Date: " + DateTime.Now.ToUniversalTime().ToString("r"));
             sb.AppendLine("Content-Type: text/html; charset=UTF-8");
-            sb.AppendLine("Transfer-Encoding: chunked");
+            //sb.AppendLine("Transfer-Encoding: chunked");
             sb.AppendLine("Connection: keep-alive");
+            leng = Encoding.UTF8.GetBytes(data);
+            int length = leng.Length;
+            length = length + 2;
+            sb.AppendLine("Content-Length: "+length);
             sb.AppendLine("");
-            sb.AppendLine("WARNING");
+            sb.AppendLine(data);
             return sb.ToString();
         }
 
