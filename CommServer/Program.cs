@@ -5,6 +5,8 @@ using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Security.Authentication;
+using System.IO;
+using CommServer.Sql;
 
 namespace CommServer
 {
@@ -14,7 +16,12 @@ namespace CommServer
         
         static void Main(string[] args)
         {
-            
+            if(CheckSettingsExists() == false)
+            {
+                Console.WriteLine("Error - We can't recognize setting file. Please read documentation. Program exiting..");
+                Console.ReadLine();
+                Environment.Exit(1);
+            }
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -25,6 +32,35 @@ namespace CommServer
                 TcpClient clientsock = listner.AcceptTcpClient();
                 proccess(clientsock,certificate);
             }
+        }
+        static bool CheckSettingsExists()
+        {
+            if (File.Exists("conf/settings.json") == true)
+            {
+                return true;
+            }
+            else if (Directory.Exists("conf") == false)
+            {
+                Directory.CreateDirectory("conf");
+
+                return false;
+            }
+            else if (File.Exists("conf/settings.json") == false)
+            {
+
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        static bool Setup()
+        {
+            Console.WriteLine("===============================");
+            Console.WriteLine("Setup Program Started");
+            Console.WriteLine("===============================");
+            return false;
         }
         static void proccess(TcpClient client, X509Certificate2 cert)
         {
@@ -101,7 +137,7 @@ namespace CommServer
 
 
 
-
+        #region Display
         static void DisplaySecurityLevel(SslStream stream)
         {
             Console.WriteLine("Cipher: {0} strength {1}", stream.CipherAlgorithm, stream.CipherStrength);
@@ -156,5 +192,6 @@ namespace CommServer
             Console.WriteLine("serverSync certificateFile.cer");
             Environment.Exit(1);
         }
+        #endregion
     }
 }
