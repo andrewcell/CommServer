@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="conf\settings.json" />
+    <None Include="conf\mysql.json" />
     <None Include="sample.crt" />
   </ItemGroup>
   <ItemGroup>

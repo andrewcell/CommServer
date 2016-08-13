@@ -8,13 +8,21 @@ using MySql.Data.MySqlClient;
 
 namespace CommServer.Sql.MySQL
 {
-    class Connet
+    public class Connet
     {
-        static bool testConnection(string host)
+        public static string testConnection()
         {
-            MySqlConnection conn = new MySqlConnection("");
-            return false;
-
+            try
+            {
+                
+                MySqlConnection conn = new MySqlConnection(Const.connStr);
+                conn.Open();
+                return "sus";
+            }
+            catch(MySqlException e)
+            {
+                return e.Message;
+            }
 
         }
     }

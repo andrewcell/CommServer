@@ -5,19 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
+using CommServer.Sql.MySQL;
 
 namespace CommServer
 {
     class Json
     {
         JsonTextReader reader;
-        string ReadSettings (string data)
+        public string ReadMySQLSettings (string data)
         {
             try
             {
                 string jsondata = File.ReadAllText("conf/settings.conf");
-                reader = new JsonTextReader(new StringReader(jsondata));
-                return "";
+                Const con = JsonConvert.DeserializeObject<Const>(jsondata);
+                Const.connStr = "server=" + con.host + ";uid=" + con.username + ";pwd=" + con.password + ";database=" + con.username;
+
+                return "Success";
             }
             catch (FileNotFoundException e)
             {

@@ -7,6 +7,7 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.IO;
 using CommServer.Sql;
+using CommServer.Sql.MySQL;
 
 namespace CommServer
 {
@@ -16,12 +17,22 @@ namespace CommServer
         
         static void Main(string[] args)
         {
-            if(CheckSettingsExists() == false)
+            Json json = new Json();
+            if (CheckSettingsExists() == false)
             {
                 Console.WriteLine("Error - We can't recognize setting file. Please read documentation. Program exiting..");
                 Console.ReadLine();
                 Environment.Exit(1);
             }
+            
+            json.ReadMySQLSettings("");
+            if(Connet.testConnection() != "sus")
+            {
+                Console.WriteLine(Connet.testConnection());
+                Console.ReadLine();
+                Environment.Exit(1);
+            }
+
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
