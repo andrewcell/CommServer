@@ -46,7 +46,7 @@ namespace CommServer
         }
         static bool CheckSettingsExists()
         {
-            if (File.Exists("conf/settings.json") == true)
+            if (File.Exists("conf/mysql.json") == true)
             {
                 return true;
             }
@@ -56,7 +56,7 @@ namespace CommServer
 
                 return false;
             }
-            else if (File.Exists("conf/settings.json") == false)
+            else if (File.Exists("conf/mysql.json") == false)
             {
 
                 return false;
