@@ -18,7 +18,7 @@ namespace CommServer
             {
                 string jsondata = File.ReadAllText("../../conf/mysql.json");
                 Const con = JsonConvert.DeserializeObject<Const>(jsondata);
-                Const.connStr = "server=" + con.host + ";uid=" + con.username + ";pwd=" + con.password + ";database=" + con.username;
+                Const.connStr = "server=" + con.host + ";uid=" + con.username + ";pwd=" + con.password + ";database=" + con.dbname;
 
                 return "Success";
             }

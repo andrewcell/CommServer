@@ -18,6 +18,7 @@ namespace CommServer
         static void Main(string[] args)
         {
             Json json = new Json();
+            Connet conn = new Connet();
             if (CheckSettingsExists() == false)
             {
                 Console.WriteLine("Error - We can't recognize setting file. Please read documentation. Program exiting..");
@@ -32,7 +33,23 @@ namespace CommServer
                 Console.ReadLine();
                 Environment.Exit(1);
             }
-
+            Console.WriteLine("MySQL Database Connected.");
+            if(Connet.testConfigure() == false)
+            {
+                Console.Write("It seems you must install sql file. Do you want continue? (Y/N)");
+                string answer = Console.ReadLine();
+                answer.ToLower();
+                if(answer == "y" || answer == "yes")
+                {
+                    SQLWorks.Setup();
+                }
+                else
+                {
+                    Console.WriteLine("Aboted. Program will exit");
+                    Console.ReadLine();
+                    Environment.Exit(1);
+                }
+            }
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -42,6 +59,7 @@ namespace CommServer
             {
                 TcpClient clientsock = listner.AcceptTcpClient();
                 proccess(clientsock,certificate);
+
             }
         }
         static bool CheckSettingsExists()
@@ -79,17 +97,18 @@ namespace CommServer
             try
             {
                 ssl.AuthenticateAsServer(cert, false, SslProtocols.Tls12, true);
-                DisplaySecurityLevel(ssl);
+               /* DisplaySecurityLevel(ssl);
                 DisplaySecurityServices(ssl);
                 DisplayCertificateInformation(ssl);
-                DisplayStreamProperties(ssl);
+                DisplayStreamProperties(ssl);*/
                 byte[] message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
                 string Message = ReadMessage(ssl);
                 Console.WriteLine("{0}", Message);
-             message = Encoding.UTF8.GetBytes(BuildString(data));
+                message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
-
+                ssl.Close();
+                client.Close();
             }
             catch (AuthenticationException e)
             {
@@ -107,6 +126,7 @@ namespace CommServer
             {
                 ssl.Close();
                 client.Close();
+      
             }
         }
 
