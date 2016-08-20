@@ -89,8 +89,15 @@ namespace CommServer
                 Console.WriteLine("{0}", Message);
              message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
+
             }
             catch (AuthenticationException e)
+            {
+                Console.WriteLine(e.Message);
+                ssl.Close();
+                client.Close();
+            }
+            catch (IOException e)
             {
                 Console.WriteLine(e.Message);
                 ssl.Close();
