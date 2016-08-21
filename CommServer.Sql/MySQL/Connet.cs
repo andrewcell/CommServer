@@ -31,7 +31,7 @@ namespace CommServer.Sql.MySQL
             try
             {
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts", Const.conn);
-                using (MySqlDataReader reader = Const.cmd.ExecuteReader())
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     
                 }
@@ -44,11 +44,11 @@ namespace CommServer.Sql.MySQL
                 Console.WriteLine(ef.Message);
                 return false;
             }
-         /*   catch (NullReferenceException e)
+            catch (NullReferenceException e)
             {
                 Console.WriteLine(e.Message);
                 return false;
-            }*/
+            }
         }
     }
     public class SQLWorks
