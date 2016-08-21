@@ -26,28 +26,31 @@ namespace CommServer.Sql.MySQL
             }
 
         }
-        public static bool testConfigure()
+        public static string detectVersion()
+        {
+            return Const.conn.ServerVersion;
+        }
+        public static short testAccount()
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM accounts", Const.conn);
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    
-                }
-                return true;
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM accounts", Const.conn);
+               // MySqlDataReader reader = cmd.ExecuteReader();
+                var auto = cmd.ExecuteScalar();
+                return Convert.ToInt16(auto);
+
                
             }
             catch (MySqlException ef)
             {
                 
                 Console.WriteLine(ef.Message);
-                return false;
+                return -1;
             }
             catch (NullReferenceException e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return -1;
             }
         }
     }

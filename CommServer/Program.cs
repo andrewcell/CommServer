@@ -13,7 +13,7 @@ namespace CommServer
 {
     class Program
     {
-        private static string data = "<h1>Connect directly is not accepted.</h1>";   
+        private static string data = "true";   
         
         static void Main(string[] args)
         {
@@ -34,7 +34,9 @@ namespace CommServer
                 Environment.Exit(1);
             }
             Console.WriteLine("MySQL Database Connected.");
-            if(Connet.testConfigure() == false)
+            Console.WriteLine("MySQL Server : " + Connet.detectVersion());
+            short accountN = Connet.testAccount();
+            if(accountN == -1)
             {
                 Console.Write("It seems you must install sql file. Do you want continue? (Y/N)");
                 string answer = Console.ReadLine();
@@ -49,7 +51,13 @@ namespace CommServer
                     Console.ReadLine();
                     Environment.Exit(1);
                 }
+
             }
+            else
+            {
+                Console.WriteLine("Accounts Detected : " + accountN.ToString());
+            }
+             
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -97,16 +105,16 @@ namespace CommServer
             try
             {
                 ssl.AuthenticateAsServer(cert, false, SslProtocols.Tls12, true);
-               /* DisplaySecurityLevel(ssl);
+                DisplaySecurityLevel(ssl);
                 DisplaySecurityServices(ssl);
                 DisplayCertificateInformation(ssl);
-                DisplayStreamProperties(ssl);*/
+                DisplayStreamProperties(ssl);
                 byte[] message = Encoding.UTF8.GetBytes(BuildString(data));
                 ssl.Write(message);
-                string Message = ReadMessage(ssl);
-                Console.WriteLine("{0}", Message);
-                message = Encoding.UTF8.GetBytes(BuildString(data));
-                ssl.Write(message);
+              /*  string Message = ReadMessage(ssl);
+                Console.WriteLine("{0}", Message);*/
+                //message = Encoding.UTF8.GetBytes(BuildString(data));
+               // ssl.Write(message);
                 ssl.Close();
                 client.Close();
             }
