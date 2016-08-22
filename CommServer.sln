@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer", "CommServer\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.Sql", "CommServer.Sql\CommServer.Sql.csproj", "{67A61827-C452-456B-906A-7F60FAFC5BD3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommServer.Library", "CommServer.Library\CommServer.Library.vcxproj", "{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommServer.Library", "CommServer.Library\CommServer.Library.vcxproj", "{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,16 +43,16 @@ Global
 		{67A61827-C452-456B-906A-7F60FAFC5BD3}.Release|x64.Build.0 = Release|Any CPU
 		{67A61827-C452-456B-906A-7F60FAFC5BD3}.Release|x86.ActiveCfg = Release|Any CPU
 		{67A61827-C452-456B-906A-7F60FAFC5BD3}.Release|x86.Build.0 = Release|Any CPU
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Debug|x64.ActiveCfg = Debug|x64
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Debug|x64.Build.0 = Debug|x64
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Debug|x86.ActiveCfg = Debug|Win32
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Debug|x86.Build.0 = Debug|Win32
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Release|Any CPU.ActiveCfg = Release|Win32
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Release|x64.ActiveCfg = Release|x64
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Release|x64.Build.0 = Release|x64
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Release|x86.ActiveCfg = Release|Win32
-		{428303DB-B577-40F9-8AC4-D7E5DD5F11B9}.Release|x86.Build.0 = Release|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Debug|x64.ActiveCfg = Debug|x64
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Debug|x64.Build.0 = Debug|x64
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Debug|x86.ActiveCfg = Debug|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Debug|x86.Build.0 = Debug|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Release|Any CPU.ActiveCfg = Release|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Release|x64.ActiveCfg = Release|x64
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Release|x64.Build.0 = Release|x64
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Release|x86.ActiveCfg = Release|Win32
+		{05342BCB-E54D-4384-AE7C-4ADC10EE2F5B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

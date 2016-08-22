@@ -56,6 +56,10 @@
     <None Include="sample.crt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommServer.Library\CommServer.Library.vcxproj">
+      <Project>{05342bcb-e54d-4384-ae7c-4adc10ee2f5b}</Project>
+      <Name>CommServer.Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommServer.Sql\CommServer.Sql.csproj">
       <Project>{67a61827-c452-456b-906a-7f60fafc5bd3}</Project>
       <Name>CommServer.Sql</Name>

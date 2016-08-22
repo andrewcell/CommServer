@@ -9,6 +9,8 @@ using System.IO;
 using CommServer.Sql;
 using CommServer.Sql.MySQL;
 
+
+
 namespace CommServer
 {
     class Program
@@ -102,6 +104,7 @@ namespace CommServer
         }
         static void proccess(TcpClient client, X509Certificate2 cert)
         {
+            CommServerLibrary.DataReturn datas = new CommServerLibrary.DataReturn();
             SslStream ssl = new SslStream(client.GetStream(), false);
             try
             {
@@ -110,10 +113,11 @@ namespace CommServer
                 DisplaySecurityServices(ssl);
                 DisplayCertificateInformation(ssl);
                 DisplayStreamProperties(ssl);
-                byte[] message = Encoding.UTF8.GetBytes(BuildString(data));
+                string Message = ReadMessage(ssl);
+                string returned = datas.dataReturn(Message);
+                byte[] message = Encoding.UTF8.GetBytes(BuildString(returned));
                 ssl.Write(message);
-              /*  string Message = ReadMessage(ssl);
-                Console.WriteLine("{0}", Message);*/
+                Console.WriteLine("{0}", Message);
                 //message = Encoding.UTF8.GetBytes(BuildString(data));
                // ssl.Write(message);
                 ssl.Close();
