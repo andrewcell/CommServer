@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CommServer.Sql")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("CommServer Integrated SQL Library")]
+[assembly: AssemblyDescription("CommServer Integrated SQL Library supports MySQL, MSSQL")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CommServer.Sql")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("Andrew M. Bray")]
+[assembly: AssemblyProduct("CommServer SQL")]
+[assembly: AssemblyCopyright("Copyright © Andrew M. Bray 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
