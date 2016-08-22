@@ -60,6 +60,7 @@ namespace CommServer
              
             TcpListener listner = new TcpListener(IPAddress.Any, 443);
             listner.Start();
+            Console.WriteLine("Server Started:");
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             X509Certificate2 certificate = new X509Certificate2("c:/users/andrew/sample.pfx","1");
