@@ -45,16 +45,3 @@ namespace CommServerLibrary {
 		// TODO: Add your methods for this class here.
 	};
 }
-
-/*
-
-#include "stdafx.h"
-#include <string>
-
-
-using namespace std;
-namespace Library
-{
-
-	
-}*/
