@@ -19,6 +19,8 @@ namespace CommServer
         
         static void Main(string[] args)
         {
+            CommServerLibrary.DataReturn rtr = new CommServerLibrary.DataReturn();
+            rtr.SetStyle(1, true);
             Json json = new Json();
             Connet conn = new Connet();
             if (CheckSettingsExists() == false)
@@ -109,10 +111,10 @@ namespace CommServer
             try
             {
                 ssl.AuthenticateAsServer(cert, false, SslProtocols.Tls12, true);
-                DisplaySecurityLevel(ssl);
+              /*  DisplaySecurityLevel(ssl);
                 DisplaySecurityServices(ssl);
                 DisplayCertificateInformation(ssl);
-                DisplayStreamProperties(ssl);
+                DisplayStreamProperties(ssl);*/
                 string Message = ReadMessage(ssl);
                 string returned = datas.dataReturn(Message);
                 byte[] message = Encoding.UTF8.GetBytes(BuildString(returned));
@@ -142,9 +144,11 @@ namespace CommServer
       
             }
         }
+        static string msg;
 
         static string ReadMessage(SslStream sslStream)
         {
+           
             // from MSDN
             byte[] buffer = new byte[2048];
             StringBuilder messageData = new StringBuilder();
@@ -164,9 +168,17 @@ namespace CommServer
                 {
                     break;
                 }
+                string a = messageData.ToString();
+             //   msg = GetSubstringByString("</data>", "<data>", messageData.ToString());
+                
+
             } while (bytes != 0);
 
             return messageData.ToString();
+        }
+        public static string GetSubstringByString(string a, string b, string c)
+        {
+            return c.Substring((c.IndexOf(a) + a.Length), (c.IndexOf(b) - c.IndexOf(a) - a.Length));
         }
         static string BuildString(string data)
         {

@@ -23,11 +23,16 @@ namespace CommServerLibrary {
 		bool SetStyle(char, bool);
 
 	};
-	String^ DataReturn::dataReturn( String^ Data)
+	String^ DataReturn::dataReturn(String^ Data)
 	{
 		if (Data == "GetServerStyle")
 		{
 			String^ parse = cls.EncryptionType.ToString() + ";" + cls.XMLUse.ToString();
+			return parse;
+		}
+		else 
+		{
+			String^ parse = "Error";
 			return parse;
 		}
 	}
@@ -40,7 +45,7 @@ namespace CommServerLibrary {
 	}
 	String^ chk(String^ data)
 	{
-		
+		return "";
 	}
 
 	public ref class Class1
