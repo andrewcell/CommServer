@@ -27,7 +27,7 @@ namespace CommServerLibrary {
 	{
 		if (Data == "GetServerStyle")
 		{
-			String^ parse = "";//cls.EncryptionType.ToString() + ";" + cls.XMLUse.ToString();
+			String^ parse = cls.EncryptionType.ToString() + ";" + cls.XMLUse.ToString();
 			return parse;
 		}
 	}
@@ -38,7 +38,10 @@ namespace CommServerLibrary {
 		cl.XMLUse = XMLUse;
 		return false;
 	}
-	
+	String^ chk(String^ data)
+	{
+		
+	}
 
 	public ref class Class1
 	{
