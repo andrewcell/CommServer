@@ -25,7 +25,7 @@ namespace CommServerLibrary {
 	};
 	String^ DataReturn::dataReturn(String^ Data)
 	{
-		if (Data == "GetServerStyle")
+		if (Data == "<data>GetServerStyle</data><EOF>")
 		{
 			String^ parse = cls.EncryptionType.ToString() + ";" + cls.XMLUse.ToString();
 			return parse;

@@ -116,7 +116,7 @@ namespace CommServer
                 DisplayCertificateInformation(ssl);
                 DisplayStreamProperties(ssl);*/
                 string Message = ReadMessage(ssl);
-                string returned = datas.dataReturn(Message);
+                string returned = datas.dataReturn(RemoveServerHeader(Message));
                 byte[] message = Encoding.UTF8.GetBytes(BuildString(returned));
                 ssl.Write(message);
                 Console.WriteLine("{0}", Message);
@@ -164,6 +164,7 @@ namespace CommServer
                 decoder.GetChars(buffer, 0, bytes, chars, 0);
                 messageData.Append(chars);
                 // Check for EOF.
+                
                 if (messageData.ToString().IndexOf("<EOF>") != -1)
                 {
                     break;
@@ -179,6 +180,24 @@ namespace CommServer
         public static string GetSubstringByString(string a, string b, string c)
         {
             return c.Substring((c.IndexOf(a) + a.Length), (c.IndexOf(b) - c.IndexOf(a) - a.Length));
+        }
+        public static string RemoveServerHeader(string data)
+        {
+            int i = 0;
+            string[] split = data.Split('\n');
+            string datad = "";
+            while(i<8)
+            {
+                split[i] = "";
+                i++;
+
+            }
+            foreach (string a in split)
+            {
+                datad = datad + a;
+            }
+            return datad;
+            
         }
         static string BuildString(string data)
         {
